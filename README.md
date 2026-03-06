@@ -41,3 +41,4 @@ Implementing this security model affects the system in the following ways:
 | **Throughput** | batch.size=64k | Higher throughput, offsets SSL overhead |
 | **Latency** | linger.ms=0 | Lower latency, higher CPU usage |
 | **Availability** | replication.factor=3 | High availability, requires more brokers |
+
