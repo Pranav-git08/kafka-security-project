@@ -35,3 +35,9 @@ Implementing this security model affects the system in the following ways:
 * **Throughput:** Because encryption adds overhead to each packet, I observed that increasing `batch.size` (e.g., to 64KB) helps recover throughput by encrypting larger chunks of data at once.
 * **Durability:** By using `acks=all` alongside SSL, we ensure the highest data safety, though this represents the "slowest" possible configuration.
 * **Availability:** The inter-broker security ensures that even if one node is compromised, the attacker cannot easily spoof another broker to corrupt the cluster state.
+| Pillar | Setting | Expected Result |
+| :--- | :--- | :--- |
+| **Durability** | acks=all | Lower throughput, higher data safety |
+| **Throughput** | batch.size=64k | Higher throughput, offsets SSL overhead |
+| **Latency** | linger.ms=0 | Lower latency, higher CPU usage |
+| **Availability** | replication.factor=3 | High availability, requires more brokers |
